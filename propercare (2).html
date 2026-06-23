@@ -1,0 +1,1504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ProperCare Mobile Auto Detailing | Milwaukee's Premier Mobile Detail</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --obsidian: #0A0A0F;
+    --steel: #1E2330;
+    --gold: #C9A84C;
+    --gold-light: #E8C96A;
+    --gold-dim: #7A6028;
+    --pearl: #F0EDE8;
+    --gray: #6B6B7B;
+    --white: #FFFFFF;
+    --section-gap: 120px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--obsidian);
+    color: var(--pearl);
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 60px;
+    background: rgba(10, 10, 15, 0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(201,168,76,0.12);
+    transition: padding 0.3s;
+  }
+
+  .nav-logo {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+  }
+
+  .nav-logo .logo-proper {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 0.08em;
+    color: var(--white);
+  }
+
+  .nav-logo .logo-care {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 0.08em;
+    color: var(--gold);
+  }
+
+  .nav-logo .logo-sub {
+    font-family: 'Courier New', monospace;
+    font-size: 8px;
+    letter-spacing: 0.2em;
+    color: var(--gray);
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gray);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  .nav-cta {
+    background: var(--gold);
+    color: var(--obsidian);
+    padding: 10px 24px;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+  }
+
+  .nav-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  /* ─── HERO ─── */
+  #hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 80% at 70% 50%, rgba(201,168,76,0.07) 0%, transparent 70%),
+      linear-gradient(135deg, var(--obsidian) 0%, #12151F 100%);
+  }
+
+  /* Diagonal slash */
+  .hero-slash {
+    position: absolute;
+    top: 0; right: 0;
+    width: 52%;
+    height: 100%;
+    background: var(--steel);
+    clip-path: polygon(12% 0%, 100% 0%, 100% 100%, 0% 100%);
+    opacity: 0.45;
+  }
+
+  .hero-slash::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, transparent 30%, rgba(201,168,76,0.06) 100%);
+  }
+
+  /* Gold slash line */
+  .hero-slash-line {
+    position: absolute;
+    top: 0;
+    right: calc(52% - 2px);
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent 0%, var(--gold) 25%, var(--gold-light) 55%, transparent 100%);
+    transform: skewX(-8deg);
+    transform-origin: top;
+  }
+
+  /* Abstract car silhouette */
+  .hero-car-art {
+    position: absolute;
+    right: 4%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48%;
+    max-width: 640px;
+    opacity: 0.18;
+    pointer-events: none;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 140px 60px 80px;
+    max-width: 680px;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 32px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(68px, 9vw, 116px);
+    line-height: 0.92;
+    letter-spacing: 0.02em;
+    color: var(--white);
+    margin-bottom: 32px;
+  }
+
+  h1 em {
+    font-style: normal;
+    color: var(--gold);
+  }
+
+  .hero-desc {
+    font-size: 16px;
+    color: rgba(240,237,232,0.65);
+    max-width: 440px;
+    margin-bottom: 48px;
+    line-height: 1.75;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--obsidian);
+    padding: 16px 36px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+  .btn-ghost {
+    border: 1px solid rgba(240,237,232,0.25);
+    color: var(--pearl);
+    padding: 16px 36px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    display: inline-block;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+  .hero-rating {
+    position: absolute;
+    bottom: 60px;
+    left: 60px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .hero-stars {
+    display: flex;
+    gap: 3px;
+  }
+
+  .star { color: var(--gold); font-size: 14px; }
+
+  .hero-rating-text {
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--gray);
+    text-transform: uppercase;
+  }
+
+  .hero-rating-score {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1;
+  }
+
+  /* ─── MARQUEE STRIP ─── */
+  .marquee-strip {
+    background: var(--gold);
+    padding: 14px 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .marquee-inner {
+    display: inline-flex;
+    animation: marquee 18s linear infinite;
+  }
+
+  .marquee-item {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 15px;
+    letter-spacing: 0.2em;
+    color: var(--obsidian);
+    padding: 0 48px;
+  }
+
+  .marquee-dot {
+    color: rgba(10,10,15,0.4);
+  }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* ─── STATS ─── */
+  #stats {
+    background: var(--steel);
+    padding: 80px 60px;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .stat-card {
+    padding: 40px 32px;
+    background: rgba(10,10,15,0.4);
+    text-align: center;
+    position: relative;
+  }
+
+  .stat-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: var(--gold);
+    transition: width 0.5s;
+  }
+
+  .stat-card:hover::after { width: 60%; }
+
+  .stat-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 64px;
+    line-height: 1;
+    color: var(--gold);
+  }
+
+  .stat-label {
+    font-family: 'Courier New', monospace;
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-top: 8px;
+  }
+
+  /* ─── SERVICES ─── */
+  #services {
+    padding: var(--section-gap) 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    margin-bottom: 64px;
+  }
+
+  .section-eyebrow {
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(44px, 5vw, 72px);
+    letter-spacing: 0.03em;
+    color: var(--white);
+    line-height: 1;
+  }
+
+  h2 span { color: var(--gold); }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+
+  .service-card {
+    background: var(--steel);
+    padding: 48px 36px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: background 0.25s;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 2px;
+    height: 0;
+    background: var(--gold);
+    transition: height 0.35s ease;
+  }
+
+  .service-card:hover { background: #252B3A; }
+  .service-card:hover::before { height: 100%; }
+
+  .service-icon {
+    font-size: 28px;
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .service-tag {
+    font-family: 'Courier New', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .service-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 0.05em;
+    color: var(--white);
+    margin-bottom: 16px;
+  }
+
+  .service-desc {
+    font-size: 13px;
+    color: rgba(240,237,232,0.55);
+    line-height: 1.75;
+    margin-bottom: 28px;
+  }
+
+  .service-price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    color: var(--gold);
+    letter-spacing: 0.03em;
+  }
+
+  .service-price span {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--gray);
+    margin-left: 4px;
+    letter-spacing: 0;
+  }
+
+  .service-list {
+    list-style: none;
+    margin-top: 20px;
+    border-top: 1px solid rgba(240,237,232,0.08);
+    padding-top: 20px;
+  }
+
+  .service-list li {
+    font-size: 12px;
+    color: rgba(240,237,232,0.5);
+    padding: 5px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .service-list li::before {
+    content: '—';
+    color: var(--gold-dim);
+    font-size: 10px;
+  }
+
+  .service-badge {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    background: var(--gold);
+    color: var(--obsidian);
+    font-family: 'Courier New', monospace;
+    font-size: 8px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    font-weight: 700;
+  }
+
+  /* ─── HOW IT WORKS ─── */
+  #process {
+    background: var(--steel);
+    padding: var(--section-gap) 60px;
+  }
+
+  .process-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    margin-top: 64px;
+  }
+
+  .step {
+    padding: 48px 32px;
+    background: rgba(10,10,15,0.35);
+    position: relative;
+  }
+
+  .step-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 80px;
+    line-height: 1;
+    color: rgba(201,168,76,0.12);
+    position: absolute;
+    top: 16px;
+    right: 24px;
+    letter-spacing: -0.02em;
+  }
+
+  .step-icon {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .step-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 0.05em;
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+
+  .step-desc {
+    font-size: 13px;
+    color: rgba(240,237,232,0.5);
+    line-height: 1.75;
+  }
+
+  /* ─── WHY US ─── */
+  #why {
+    padding: var(--section-gap) 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    margin-top: 64px;
+  }
+
+  .why-left .big-quote {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(28px, 3vw, 42px);
+    line-height: 1.2;
+    color: var(--white);
+    border-left: 3px solid var(--gold);
+    padding-left: 28px;
+    margin-bottom: 36px;
+  }
+
+  .why-left p {
+    font-size: 15px;
+    color: rgba(240,237,232,0.6);
+    line-height: 1.8;
+    margin-bottom: 16px;
+  }
+
+  .why-features {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 24px;
+    background: var(--steel);
+    transition: background 0.2s;
+  }
+
+  .feature:hover { background: #252B3A; }
+
+  .feature-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .feature-title {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+
+  .feature-desc {
+    font-size: 12px;
+    color: rgba(240,237,232,0.5);
+    line-height: 1.65;
+  }
+
+  /* ─── REVIEWS ─── */
+  #reviews {
+    background: var(--steel);
+    padding: var(--section-gap) 60px;
+  }
+
+  .reviews-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 64px;
+  }
+
+  .review-card {
+    background: rgba(10,10,15,0.4);
+    padding: 36px 32px;
+    position: relative;
+  }
+
+  .review-stars {
+    display: flex;
+    gap: 3px;
+    margin-bottom: 16px;
+  }
+
+  .review-text {
+    font-size: 14px;
+    color: rgba(240,237,232,0.7);
+    line-height: 1.75;
+    margin-bottom: 24px;
+    font-style: italic;
+  }
+
+  .review-text::before {
+    content: '"';
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    color: var(--gold);
+    line-height: 0;
+    vertical-align: -14px;
+    margin-right: 4px;
+    opacity: 0.4;
+  }
+
+  .review-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .review-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--gold-dim);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 16px;
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+
+  .review-name {
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--white);
+  }
+
+  .review-source {
+    font-family: 'Courier New', monospace;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    color: var(--gray);
+    text-transform: uppercase;
+  }
+
+  .google-badge {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    font-family: 'Courier New', monospace;
+    font-size: 8px;
+    letter-spacing: 0.12em;
+    color: var(--gray);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  /* ─── AREAS SERVED ─── */
+  #areas {
+    padding: var(--section-gap) 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .areas-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+    margin-top: 64px;
+  }
+
+  .areas-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 24px;
+  }
+
+  .area-tag {
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--pearl);
+    border: 1px solid rgba(240,237,232,0.2);
+    padding: 8px 16px;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .area-tag:hover { border-color: var(--gold); color: var(--gold); }
+
+  .areas-info {
+    padding: 40px;
+    background: var(--steel);
+    border-left: 3px solid var(--gold);
+  }
+
+  .areas-info h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    letter-spacing: 0.04em;
+    color: var(--white);
+    margin-bottom: 16px;
+  }
+
+  .areas-info p {
+    font-size: 14px;
+    color: rgba(240,237,232,0.6);
+    line-height: 1.75;
+    margin-bottom: 24px;
+  }
+
+  .info-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    padding: 14px 0;
+    border-top: 1px solid rgba(240,237,232,0.08);
+  }
+
+  .info-row:first-of-type { margin-top: 16px; }
+
+  .info-label {
+    font-family: 'Courier New', monospace;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    min-width: 80px;
+  }
+
+  .info-value {
+    font-size: 14px;
+    color: var(--pearl);
+    font-weight: 500;
+  }
+
+  /* ─── BOOKING CTA ─── */
+  #booking {
+    background: var(--gold);
+    padding: 100px 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #booking::before {
+    content: 'BOOK';
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 320px;
+    letter-spacing: -0.05em;
+    color: rgba(10,10,15,0.06);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    pointer-events: none;
+  }
+
+  #booking h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 6vw, 80px);
+    color: var(--obsidian);
+    letter-spacing: 0.03em;
+    margin-bottom: 16px;
+  }
+
+  #booking p {
+    font-size: 16px;
+    color: rgba(10,10,15,0.6);
+    margin-bottom: 48px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .booking-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+  }
+
+  .btn-dark {
+    background: var(--obsidian);
+    color: var(--gold);
+    padding: 18px 48px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .btn-dark:hover { background: var(--steel); transform: translateY(-2px); }
+
+  .btn-outline-dark {
+    border: 2px solid var(--obsidian);
+    color: var(--obsidian);
+    padding: 18px 48px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s;
+  }
+
+  .btn-outline-dark:hover { background: rgba(10,10,15,0.08); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--obsidian);
+    border-top: 1px solid rgba(240,237,232,0.06);
+    padding: 80px 60px 40px;
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 60px;
+  }
+
+  .footer-brand .logo-proper {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 0.06em;
+    color: var(--white);
+  }
+
+  .footer-brand .logo-care {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 0.06em;
+    color: var(--gold);
+  }
+
+  .footer-brand p {
+    margin-top: 16px;
+    font-size: 13px;
+    color: rgba(240,237,232,0.45);
+    line-height: 1.75;
+    max-width: 260px;
+  }
+
+  .footer-col h4 {
+    font-family: 'Courier New', monospace;
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+  }
+
+  .footer-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .footer-col ul li a {
+    font-size: 13px;
+    color: rgba(240,237,232,0.45);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-col ul li a:hover { color: var(--gold); }
+
+  .footer-col ul li span {
+    font-size: 13px;
+    color: rgba(240,237,232,0.45);
+  }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(240,237,232,0.06);
+    padding-top: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-copy {
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: rgba(240,237,232,0.25);
+    text-transform: uppercase;
+  }
+
+  .social-links {
+    display: flex;
+    gap: 20px;
+  }
+
+  .social-links a {
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(240,237,232,0.35);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .social-links a:hover { color: var(--gold); }
+
+  /* ─── FLOATING CTA ─── */
+  .float-cta {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    z-index: 999;
+    background: var(--gold);
+    color: var(--obsidian);
+    padding: 14px 28px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    box-shadow: 0 8px 32px rgba(201,168,76,0.35);
+    transform: translateY(0);
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .float-cta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(201,168,76,0.5);
+  }
+
+  /* ─── ANIMATIONS ─── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    .hero-content { padding: 120px 24px 80px; }
+    .hero-slash { display: none; }
+    .hero-slash-line { display: none; }
+    .hero-rating { left: 24px; bottom: 40px; }
+    #stats, #services, #why, #areas, #reviews, #reviews .reviews-inner,
+    #areas, #process .process-inner { padding-left: 24px; padding-right: 24px; }
+    #services, #why, #areas { padding-left: 24px; padding-right: 24px; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .services-grid { grid-template-columns: 1fr; }
+    .process-steps { grid-template-columns: 1fr 1fr; }
+    .why-grid { grid-template-columns: 1fr; gap: 40px; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .areas-grid { grid-template-columns: 1fr; gap: 40px; }
+    footer { padding: 60px 24px 32px; }
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
+    #booking { padding: 80px 24px; }
+    .float-cta { bottom: 20px; right: 16px; padding: 12px 20px; font-size: 11px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- FLOATING BOOK CTA -->
+<a href="https://docs.google.com/forms/d/e/1FAIpQLSffc_buS7dajrfwhSgOULM9NdvE608Rp2RUNVyQ4iETB4mgXg/viewform?usp=header" target="_blank" class="float-cta">
+  ✦ Book Now
+</a>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <div><span class="logo-proper">PROPER</span><span class="logo-care">CARE</span></div>
+    <div class="logo-sub">Mobile Auto Detailing</div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#process">How It Works</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#areas">Coverage</a></li>
+  </ul>
+  <a href="tel:4143348686" class="nav-cta">Call (414) 334-8686</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-slash"></div>
+  <div class="hero-slash-line"></div>
+
+  <!-- Abstract car SVG -->
+  <svg class="hero-car-art" viewBox="0 0 600 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M80 180 L140 140 L200 110 L300 100 L400 100 L460 115 L520 140 L540 180 Z" fill="none" stroke="#C9A84C" stroke-width="1.5"/>
+    <path d="M140 140 L180 105 L280 90 L380 90 L430 105 L460 120" fill="none" stroke="#C9A84C" stroke-width="1.5"/>
+    <circle cx="175" cy="182" r="30" fill="none" stroke="#C9A84C" stroke-width="2"/>
+    <circle cx="175" cy="182" r="18" fill="none" stroke="#C9A84C" stroke-width="1" opacity="0.5"/>
+    <circle cx="435" cy="182" r="30" fill="none" stroke="#C9A84C" stroke-width="2"/>
+    <circle cx="435" cy="182" r="18" fill="none" stroke="#C9A84C" stroke-width="1" opacity="0.5"/>
+    <line x1="80" y1="180" x2="540" y2="180" stroke="#C9A84C" stroke-width="1" opacity="0.4"/>
+    <!-- Reflection highlight -->
+    <path d="M200 115 L290 100 L350 100 L400 108 L380 115 L200 115 Z" fill="rgba(201,168,76,0.08)"/>
+  </svg>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">Milwaukee's Premier Mobile Detail</div>
+    <h1>YOUR CAR.<br>YOUR DRIVEWAY.<br><em>PERFECTED.</em></h1>
+    <p class="hero-desc">ProperCare comes to you — delivering showroom-quality detailing wherever you are, whenever you need it. No drop-offs. No waiting. Just results.</p>
+    <div class="hero-actions">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSffc_buS7dajrfwhSgOULM9NdvE608Rp2RUNVyQ4iETB4mgXg/viewform?usp=header" target="_blank" class="btn-primary">Book Your Detail</a>
+      <a href="#services" class="btn-ghost">View Services</a>
+    </div>
+  </div>
+
+  <div class="hero-rating">
+    <div>
+      <div class="hero-rating-score">5.0</div>
+      <div class="hero-stars">
+        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+      </div>
+    </div>
+    <div class="hero-rating-text">27 Google Reviews<br>Perfect Score</div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip" aria-hidden="true">
+  <div class="marquee-inner">
+    <span class="marquee-item">Interior Detail <span class="marquee-dot">◆</span></span>
+    <span class="marquee-item">Exterior Wash & Wax <span class="marquee-dot">◆</span></span>
+    <span class="marquee-item">Deep Clean <span class="marquee-dot">◆</span></span>
+    <span class="marquee-item">Paint Protection <span class="marquee-dot">◆</span></span>
+    <span class="marquee-item">Mobile Service <span class="marquee-dot">◆</span></span>
+    <span class="marquee-item">Available 24/7 <span class="marquee-dot">◆</span></span>
+    <span class="marquee-item">Milwaukee, WI <span class="marquee-dot">◆</span></span>
+    <span class="marquee-item">Interior Detail <span class="marquee-dot">◆</span></span>
+    <span class="marquee-item">Exterior Wash & Wax <span class="marquee-dot">◆</span></span>
+    <span class="marquee-item">Deep Clean <span class="marquee-dot">◆</span></span>
+    <span class="marquee-item">Paint Protection <span class="marquee-dot">◆</span></span>
+    <span class="marquee-item">Mobile Service <span class="marquee-dot">◆</span></span>
+    <span class="marquee-item">Available 24/7 <span class="marquee-dot">◆</span></span>
+    <span class="marquee-item">Milwaukee, WI <span class="marquee-dot">◆</span></span>
+  </div>
+</div>
+
+<!-- STATS -->
+<section id="stats">
+  <div class="stats-grid">
+    <div class="stat-card reveal">
+      <div class="stat-number" data-target="5" data-suffix=".0★">5.0★</div>
+      <div class="stat-label">Google Rating</div>
+    </div>
+    <div class="stat-card reveal reveal-delay-1">
+      <div class="stat-number" data-target="27" data-suffix="">27+</div>
+      <div class="stat-label">Verified Reviews</div>
+    </div>
+    <div class="stat-card reveal reveal-delay-2">
+      <div class="stat-number" data-target="24" data-suffix="/7">24/7</div>
+      <div class="stat-label">Hours Available</div>
+    </div>
+    <div class="stat-card reveal reveal-delay-3">
+      <div class="stat-number">MKE</div>
+      <div class="stat-label">Milwaukee & Surrounding Areas</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-header reveal">
+    <div class="section-eyebrow">What We Offer</div>
+    <h2>DETAIL PACKAGES<br><span>BUILT TO LAST</span></h2>
+  </div>
+
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <span class="service-icon">🧹</span>
+      <div class="service-tag">Interior · Most Popular</div>
+      <div class="service-name">Standard Interior Detail</div>
+      <p class="service-desc">A thorough deep clean that eliminates dirt, dust, and odor from every surface inside your vehicle.</p>
+      <div class="service-price">$150 <span>starting</span></div>
+      <ul class="service-list">
+        <li>Full vacuum (seats, floors, trunk)</li>
+        <li>Dashboard & console wipe-down</li>
+        <li>Door panel & jamb cleaning</li>
+        <li>Window interior streak-free clean</li>
+        <li>Odor elimination treatment</li>
+      </ul>
+    </div>
+
+    <div class="service-card reveal reveal-delay-1">
+      <div class="service-badge">Top Rated</div>
+      <span class="service-icon">✨</span>
+      <div class="service-tag">Exterior · Best Value</div>
+      <div class="service-name">Premium Exterior Detail</div>
+      <p class="service-desc">Safe hand-wash, clay bar treatment, and wax protection that gives your paint a showroom mirror-finish.</p>
+      <div class="service-price">$200 <span>starting</span></div>
+      <ul class="service-list">
+        <li>pH-neutral hand wash & rinse</li>
+        <li>Clay bar paint decontamination</li>
+        <li>Tire & wheel deep clean</li>
+        <li>Carnauba wax or sealant coat</li>
+        <li>Window & trim detailing</li>
+      </ul>
+    </div>
+
+    <div class="service-card reveal reveal-delay-2">
+      <span class="service-icon">🏆</span>
+      <div class="service-tag">Full Detail · Ultimate Care</div>
+      <div class="service-name">Complete Detail Package</div>
+      <p class="service-desc">The full ProperCare experience — interior and exterior combined for a total vehicle transformation.</p>
+      <div class="service-price">$320 <span>starting</span></div>
+      <ul class="service-list">
+        <li>Everything in Interior + Exterior</li>
+        <li>Leather conditioning treatment</li>
+        <li>Engine bay light clean</li>
+        <li>Premium interior dressing</li>
+        <li>Final inspection & touch-up</li>
+      </ul>
+    </div>
+  </div>
+
+  <div style="margin-top: 40px; text-align: center; reveal">
+    <p style="font-family:'Courier New',monospace; font-size:10px; letter-spacing:0.18em; text-transform:uppercase; color:var(--gray);">Pricing varies by vehicle size & condition · SUVs & trucks may incur additional fees</p>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="process">
+  <div class="process-inner">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">The Process</div>
+      <h2>SIMPLE AS<br><span>1 — 2 — 3 — 4</span></h2>
+    </div>
+
+    <div class="process-steps">
+      <div class="step reveal">
+        <div class="step-num">01</div>
+        <div class="step-icon">📋</div>
+        <div class="step-title">Book Online</div>
+        <p class="step-desc">Fill out our quick booking form. Pick your package, tell us your location, and choose a time that works for you.</p>
+      </div>
+      <div class="step reveal reveal-delay-1">
+        <div class="step-num">02</div>
+        <div class="step-icon">📞</div>
+        <div class="step-title">We Confirm</div>
+        <p class="step-desc">Our team reviews your request and confirms your appointment. We'll reach out if we have any questions.</p>
+      </div>
+      <div class="step reveal reveal-delay-2">
+        <div class="step-num">03</div>
+        <div class="step-icon">🚐</div>
+        <div class="step-title">We Come To You</div>
+        <p class="step-desc">Our fully-equipped mobile unit arrives at your home, office, or anywhere you park. No drop-offs needed.</p>
+      </div>
+      <div class="step reveal reveal-delay-3">
+        <div class="step-num">04</div>
+        <div class="step-icon">🚘</div>
+        <div class="step-title">Drive In Style</div>
+        <p class="step-desc">Your car is returned to you spotless. We don't leave until you're completely satisfied with the results.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <div class="why-grid">
+    <div class="why-left reveal">
+      <div class="big-quote">Milwaukee's trusted mobile detailing service — delivering top-quality results right to your driveway.</div>
+      <p>We specialize in deep interior cleaning, safe exterior washing, and premium protection services — all at the convenience of your location. No appointment headaches. No sitting in a waiting room. Just ProperCare pulling up to your vehicle and going to work.</p>
+      <p>Available 24/7, we fit into your schedule — not the other way around.</p>
+    </div>
+    <div class="why-features">
+      <div class="feature reveal reveal-delay-1">
+        <span class="feature-icon">📍</span>
+        <div>
+          <div class="feature-title">We Come To You</div>
+          <p class="feature-desc">Home, office, apartment complex — if you can park it, we can detail it. Truly mobile service with zero hassle.</p>
+        </div>
+      </div>
+      <div class="feature reveal reveal-delay-2">
+        <span class="feature-icon">🕐</span>
+        <div>
+          <div class="feature-title">Available 24 / 7</div>
+          <p class="feature-desc">Early morning before work. Late night after hours. We work around your life, not the other way around.</p>
+        </div>
+      </div>
+      <div class="feature reveal reveal-delay-3">
+        <span class="feature-icon">⭐</span>
+        <div>
+          <div class="feature-title">5-Star Rated · 27 Reviews</div>
+          <p class="feature-desc">A perfect score isn't luck — it's the result of caring about every vehicle as if it were our own.</p>
+        </div>
+      </div>
+      <div class="feature reveal reveal-delay-4">
+        <span class="feature-icon">🛡️</span>
+        <div>
+          <div class="feature-title">Professional-Grade Products</div>
+          <p class="feature-desc">We use only safe, high-quality detailing products that protect your paint, leather, and trim for the long run.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="reviews-inner">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">What Customers Say</div>
+      <h2>27 FIVE-STAR<br><span>GOOGLE REVIEWS</span></h2>
+    </div>
+
+    <div class="reviews-grid">
+      <div class="review-card reveal">
+        <div class="google-badge">⬤ Google</div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">My car looks better than when I bought it. ProperCare showed up on time, worked fast, and the interior was absolutely spotless. I'll never go back to a car wash again.</p>
+        <div class="review-author">
+          <div class="review-avatar">M</div>
+          <div>
+            <div class="review-name">Marcus T.</div>
+            <div class="review-source">Google Review</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card reveal reveal-delay-1">
+        <div class="google-badge">⬤ Google</div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Incredibly professional. They came right to my apartment and detailed both of my cars. The attention to detail is unmatched — worth every penny. Highly recommend.</p>
+        <div class="review-author">
+          <div class="review-avatar">J</div>
+          <div>
+            <div class="review-name">Jessica L.</div>
+            <div class="review-source">Google Review</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card reveal reveal-delay-2">
+        <div class="google-badge">⬤ Google</div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Booked a same-day appointment and they were at my door within hours. The exterior looks like a brand new coat of paint. Five stars, easy. This is the only way to get a detail.</p>
+        <div class="review-author">
+          <div class="review-avatar">D</div>
+          <div>
+            <div class="review-name">DeShawn R.</div>
+            <div class="review-source">Google Review</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-top: 40px;">
+      <a href="https://www.google.com/search?q=propercare+mobile+auto+detailing" target="_blank" class="btn-ghost" style="display:inline-block;">See All 27 Reviews on Google →</a>
+    </div>
+  </div>
+</section>
+
+<!-- AREAS SERVED -->
+<section id="areas">
+  <div class="areas-grid">
+    <div class="reveal">
+      <div class="section-eyebrow">Service Coverage</div>
+      <h2>MILWAUKEE<br><span>& BEYOND</span></h2>
+      <p style="font-size:14px; color:rgba(240,237,232,0.55); margin-top:20px; line-height:1.8;">We serve Milwaukee and all surrounding communities. Don't see your city? Give us a call — we're always expanding.</p>
+      <div class="areas-list">
+        <span class="area-tag">Milwaukee</span>
+        <span class="area-tag">Wauwatosa</span>
+        <span class="area-tag">West Allis</span>
+        <span class="area-tag">Brookfield</span>
+        <span class="area-tag">Glendale</span>
+        <span class="area-tag">Shorewood</span>
+        <span class="area-tag">Whitefish Bay</span>
+        <span class="area-tag">Greenfield</span>
+        <span class="area-tag">Oak Creek</span>
+        <span class="area-tag">Franklin</span>
+        <span class="area-tag">Waukesha</span>
+        <span class="area-tag">New Berlin</span>
+      </div>
+    </div>
+
+    <div class="areas-info reveal reveal-delay-1">
+      <h3>CONTACT & HOURS</h3>
+      <p>Ready to book or have a question? Reach us by phone or fill out our online form. We respond fast.</p>
+      <div class="info-row">
+        <span class="info-label">Phone</span>
+        <span class="info-value"><a href="tel:4143348686" style="color:var(--pearl); text-decoration:none;">(414) 334-8686</a></span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Hours</span>
+        <span class="info-value">Open 24 / 7</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Area</span>
+        <span class="info-value">Milwaukee & Surrounding Areas</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Instagram</span>
+        <span class="info-value"><a href="https://www.instagram.com/malinkineautodetailing/" target="_blank" style="color:var(--gold); text-decoration:none;">@malinkineautodetailing</a></span>
+      </div>
+      <div style="margin-top: 32px;">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSffc_buS7dajrfwhSgOULM9NdvE608Rp2RUNVyQ4iETB4mgXg/viewform?usp=header" target="_blank" class="btn-primary" style="display:block; text-align:center;">Book an Appointment</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING CTA -->
+<section id="booking">
+  <h2>READY FOR A<br>PROPER DETAIL?</h2>
+  <p>Book online in minutes. We come to you, anywhere in Milwaukee and the surrounding area.</p>
+  <div class="booking-actions">
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSffc_buS7dajrfwhSgOULM9NdvE608Rp2RUNVyQ4iETB4mgXg/viewform?usp=header" target="_blank" class="btn-dark">Book with Google →</a>
+    <a href="tel:4143348686" class="btn-outline-dark">Call (414) 334-8686</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div><span class="logo-proper">PROPER</span><span class="logo-care">CARE</span></div>
+      <p>Milwaukee's trusted mobile auto detailing service. Professional results, delivered to your door — 24/7.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Interior Detail</a></li>
+        <li><a href="#services">Exterior Detail</a></li>
+        <li><a href="#services">Full Package</a></li>
+        <li><a href="#booking">Book Now</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#why">About Us</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#process">How It Works</a></li>
+        <li><a href="#areas">Service Area</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:4143348686">(414) 334-8686</a></li>
+        <li><span>Open 24 / 7</span></li>
+        <li><a href="https://www.instagram.com/malinkineautodetailing/" target="_blank">Instagram</a></li>
+        <li><a href="https://www.google.com/search?q=propercare+mobile+auto+detailing" target="_blank">Google Reviews</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 ProperCare Mobile Auto Detailing · Milwaukee, WI</div>
+    <div class="social-links">
+      <a href="https://www.instagram.com/malinkineautodetailing/" target="_blank">Instagram</a>
+      <a href="https://www.google.com/search?q=propercare+mobile+auto+detailing" target="_blank">Google</a>
+      <a href="tel:4143348686">Call Us</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => observer.observe(el));
+
+  // Show float CTA after scroll
+  const floatCta = document.querySelector('.float-cta');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 500) {
+      floatCta.style.opacity = '1';
+      floatCta.style.pointerEvents = 'auto';
+    } else {
+      floatCta.style.opacity = '0';
+      floatCta.style.pointerEvents = 'none';
+    }
+  });
+  floatCta.style.opacity = '0';
+  floatCta.style.transition = 'opacity 0.3s, transform 0.2s, box-shadow 0.2s';
+
+  // Smooth scroll for nav
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+</body>
+</html>
